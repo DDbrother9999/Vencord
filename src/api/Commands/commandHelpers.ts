@@ -48,10 +48,9 @@ export function sendBotMessage(channelId: string, message: PartialDeep<Message>)
  * Get the value of an option by name
  * @param args Arguments array (first argument passed to execute)
  * @param name Name of the argument
- * @param fallbackValue Fallback value in case this option wasn't passed
  * @returns Value
  */
-export function findOption<T>(args: Argument[], name: string): T & {} | undefined;
+export function findOption<T>(args: Argument[], name: string): (T & {}) | undefined;
 export function findOption<T>(args: Argument[], name: string, fallbackValue: T): T & {};
 export function findOption(args: Argument[], name: string, fallbackValue?: any) {
     return (args.find(a => a.name === name)?.value || fallbackValue) as any;

@@ -355,8 +355,9 @@ export default definePlugin({
                 tag.permissions?.some(perm => perms.includes(perm)) ||
                 (tag.condition?.(message!, user, channel))
             ) {
-                if ((channel.isForumPost() || channel.isMediaPost()) && channel.ownerId === user.id)
+                if ((channel.isForumPost() || channel.isMediaPost()) && channel.ownerId === user.id){
                     type = Tag.Types[`${tag.name}-OP`];
+                }
                 else if (user.bot && !isWebhook(message!, user) && !settings.dontShowBotTag)
                     type = Tag.Types[`${tag.name}-BOT`];
                 else

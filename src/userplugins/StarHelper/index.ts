@@ -86,7 +86,7 @@ function createTagCommand(tag: Tag){
             if (findOption(args, "ping") === undefined){
                 const originalPoster = ChannelStore.getChannel(ctx.channel.id!).ownerId;
                 if (originalPoster === undefined) return { content: tag.message };
-                return { content: "<@"+originalPoster+"> \n" + tag.message };
+                return { content: "<@"+originalPoster+"> \n\n" + tag.message };
             }
             return { content: tag.message };
         }

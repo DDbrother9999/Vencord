@@ -54,10 +54,7 @@ export default definePlugin({
         createTagCommand({ name: "client-logs-please", message: "Please send us your client logs. They are located in your .minecraft --> logs folder unless you are using a different launcher. Please google how to find the logs for your specific launcher if you are not using the default launcher. Then, upload the contents of the file to [mclo.gs](https://mclo.gs/) and click `Save`. \n4. Send the link of the website here -# Please make sure you follow the last step. -# Logs are safe to share and help us accurently help you. " });
 
         // Premier Studios <3
-        createTagCommand({ name: "introduction", message: "Hey! \n I am @starlight3633 and I will be your Commission Manager throughout this process. Your commission has been posted to our freelancers, and they will get back to you as soon as possible! My timezone is ``EST .\n\n Please let me know if you have any questions or need help and do not ever hesitate to ping me! If you would like to create another commission or update this commission please let me know and I will be able to help :purple_heart:" });
-        createTagCommand({ name: "onhold", message: "Unfortunately, if there is no response in the next 48 hours, I will have to close out this ticket. Are you still interested or would you like for me to move this into onhold?" });
-        createTagCommand({ name: "50coupon", message: "Hi @!\n\nI am so happy that everything meets your expectations. It would be amazing if you could leave a review about your experiences here: https://www.trustpilot.com/review/premierstudios.net. Again, please take your time and a review would be much appreciated! \n\nIn addition, would you like a 50% coupon on our Premade Builds Store valid for Non-Exclusive builds?" });
-        createTagCommand({ name: "10coupon", message: "Hi @!\n\nI am so happy that everything meets your expectations. It would be amazing if you could leave a review about your experiences here: https://www.trustpilot.com/review/premierstudios.net. Again, please take your time and a review would be much appreciated! \n\nIn addition, would you like a 10% coupon on our Premade Builds Store valid for Exclusive and Non-Exclusive builds?" });
+
         // createTagCommand({ name: "", message: "" });
     },
 

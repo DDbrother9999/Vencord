@@ -5,13 +5,13 @@
  */
 
 import { Settings } from "@api/Settings";
+import { traceFunctionWithResults } from "@debug/Tracer";
 import { makeLazy } from "@utils/lazy";
 import { Logger } from "@utils/Logger";
 import { interpolateIfDefined } from "@utils/misc";
 import { Patch, PatchReplacement } from "@utils/types";
 import { WebpackRequire } from "@vencord/discord-types/webpack";
 
-import { traceFunctionWithResults } from "../debug/Tracer";
 import { AnyModuleFactory, AnyWebpackRequire, MaybePatchedModuleFactory, PatchedModuleFactory } from "./types";
 import { _blacklistBadModules, _initWebpack, factoryListeners, findModuleFactory, moduleListeners, waitForSubscriptions, wreq } from "./webpack";
 
@@ -599,10 +599,14 @@ function patchFactory(moduleId: PropertyKey, originalFactory: AnyModuleFactory):
                     markedAsPatched = true;
                 }
             } catch (err) {
-                logger.error(`Patch by ${patch.plugin} errored (Module id is ${String(moduleId)}): ${replacement.match}\n`, err);
+                // FIXME: Maybe fix this properly
+                const shouldSuppressError = patch.plugin === "ContextMenuAPI" && err instanceof SyntaxError && err.message.includes("arguments");
+                if (!shouldSuppressError) {
+                    logger.error(`Patch by ${patch.plugin} errored (Module id is ${String(moduleId)}): ${replacement.match}\n`, err);
 
-                if (IS_DEV) {
-                    diffErroredPatch(code, lastCode, lastCode.match(replacement.match)!);
+                    if (IS_DEV) {
+                        diffErroredPatch(code, lastCode, lastCode.match(replacement.match)!);
+                    }
                 }
 
                 if (markedAsPatched) {

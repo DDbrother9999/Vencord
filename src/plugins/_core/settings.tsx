@@ -208,7 +208,7 @@ export default definePlugin({
                 Component: BackupAndRestoreTab,
                 Icon: BackupRestoreIcon
             }),
-            IS_DEV && PatchHelperTab && buildEntry({
+            !IS_STANDALONE && PatchHelperTab && buildEntry({
                 key: "vencord_patch_helper",
                 title: "Patch Helper",
                 Component: PatchHelperTab,
@@ -242,8 +242,8 @@ export default definePlugin({
             top: "user_section",
             aboveNitro: "billing_section",
             belowNitro: "billing_section",
-            aboveActivity: "activity_section",
-            belowActivity: "activity_section",
+            aboveActivity: "games_and_apps_section",
+            belowActivity: "games_and_apps_section",
             bottom: "utility_section"
         };
 
